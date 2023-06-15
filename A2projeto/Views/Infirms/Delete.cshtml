@@ -1,0 +1,88 @@
+﻿@model A2projeto.Models.Infirms
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Infirms</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.physicalTreatment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.physicalTreatment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pharmaceuticalTreatment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pharmaceuticalTreatment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vaccine)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vaccine)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.frequencyOfTreatment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.frequencyOfTreatment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.durationOfTreatment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.durationOfTreatment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.treatmentStartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.treatmentStartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

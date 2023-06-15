@@ -38,6 +38,25 @@ namespace A2projeto.Controllers
         // GET: Animals/Create
         public ActionResult Create()
         {
+            var feedings = db.Feedings.ToList();
+            var sectors = db.Sectors.ToList();
+
+            var feedingsSelectList = feedings.Select(a => new SelectListItem
+            {
+                Value = a.id.ToString(),
+                Text = a.name
+            }).ToList();
+
+            var sectorsSelectList = sectors.Select(a => new SelectListItem
+            {
+                Value = a.id.ToString(),
+                Text = a.name
+            }).ToList();
+
+
+            ViewBag.Feedings = feedingsSelectList;
+            ViewBag.Sectors = sectorsSelectList;
+
             return View();
         }
 
@@ -54,6 +73,20 @@ namespace A2projeto.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            var feedings = db.Feedings.ToList();
+
+            var sectors = db.Sectors.ToList();
+
+            var feedingsSelectList = feedings.Select(a => new SelectListItem
+            {
+                Value = a.id.ToString(),
+                Text = a.name
+            }).ToList();
+            var sectorsSelectList = sectors.Select(a => new SelectListItem
+            {
+                Value = a.id.ToString(),
+                Text = a.name
+            }).ToList();
 
             return View(animals);
         }

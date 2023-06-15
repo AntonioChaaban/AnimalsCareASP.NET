@@ -1,0 +1,58 @@
+﻿@model A2projeto.Models.Reproductions
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Reproductions</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.expectedMatingDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.expectedMatingDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.matingDateHeld)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.matingDateHeld)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.scenarioDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.scenarioDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descriptionAct)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descriptionAct)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pregnancy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pregnancy)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

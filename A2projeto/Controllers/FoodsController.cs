@@ -38,6 +38,14 @@ namespace A2projeto.Controllers
         // GET: Foods/Create
         public ActionResult Create()
         {
+            var feedings = db.Feedings.ToList();
+            var feedingsSelectList = feedings.Select(a => new SelectListItem
+            {
+                Value = a.id.ToString(),
+                Text = a.name
+            }).ToList();
+
+            ViewBag.Feedings = feedingsSelectList;
             return View();
         }
 
@@ -54,7 +62,12 @@ namespace A2projeto.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            var feedings = db.Feedings.ToList();
+            var feedingsSelectList = feedings.Select(a => new SelectListItem
+            {
+                Value = a.id.ToString(),
+                Text = a.name
+            }).ToList();
             return View(foods);
         }
 

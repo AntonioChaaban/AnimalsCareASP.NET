@@ -27,7 +27,7 @@ namespace A2projeto.Models
 
         public String characteristics { get; set; }
 
-        public Feedings feedings { get; set; }
+        public string feedings { get; set; }
 
         public bool extinct { get; set; }
 
@@ -35,6 +35,6 @@ namespace A2projeto.Models
 
         public String standards_of_care { get; set; }
 
-        public Sectors sector { get; set; }
+        public string sector { get; set; }
     }
 }

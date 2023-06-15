@@ -1,0 +1,75 @@
+﻿@model IEnumerable<A2projeto.Models.Infirms>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.physicalTreatment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pharmaceuticalTreatment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vaccine)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.frequencyOfTreatment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.durationOfTreatment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.treatmentStartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.physicalTreatment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pharmaceuticalTreatment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.vaccine)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.frequencyOfTreatment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.durationOfTreatment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.treatmentStartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

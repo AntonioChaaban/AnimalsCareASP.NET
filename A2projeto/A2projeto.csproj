@@ -172,9 +172,14 @@
     <Compile Include="Controllers\AnimalsController.cs" />
     <Compile Include="Controllers\FeedingsController.cs" />
     <Compile Include="Controllers\FoodsController.cs" />
+    <Compile Include="Controllers\HealthRecordsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InfirmsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PerformFeedingsController.cs" />
+    <Compile Include="Controllers\PersonnelsController.cs" />
+    <Compile Include="Controllers\ReproductionsController.cs" />
+    <Compile Include="Controllers\SectorsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -186,10 +191,35 @@
     <Compile Include="Migrations\202306141925102_SecondCreation.designer.cs">
       <DependentUpon>202306141925102_SecondCreation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202306142102470_FourthCreate.cs" />
+    <Compile Include="Migrations\202306142102470_FourthCreate.designer.cs">
+      <DependentUpon>202306142102470_FourthCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202306142119485_FifthCreate.cs" />
+    <Compile Include="Migrations\202306142119485_FifthCreate.designer.cs">
+      <DependentUpon>202306142119485_FifthCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202306142304403_SixthCreate.cs" />
+    <Compile Include="Migrations\202306142304403_SixthCreate.designer.cs">
+      <DependentUpon>202306142304403_SixthCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202306142341486_SeventhCreate.cs" />
+    <Compile Include="Migrations\202306142341486_SeventhCreate.designer.cs">
+      <DependentUpon>202306142341486_SeventhCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202306150102346_EighthCreate.cs" />
+    <Compile Include="Migrations\202306150102346_EighthCreate.designer.cs">
+      <DependentUpon>202306150102346_EighthCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202306150352566_NinthCreate.cs" />
+    <Compile Include="Migrations\202306150352566_NinthCreate.designer.cs">
+      <DependentUpon>202306150352566_NinthCreate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Animals.cs" />
     <Compile Include="Models\EatingHabits.cs" />
+    <Compile Include="Models\Expertises.cs" />
     <Compile Include="Models\Feedings.cs" />
     <Compile Include="Models\Foods.cs" />
     <Compile Include="Models\HealthRecords.cs" />
@@ -197,6 +227,7 @@
     <Compile Include="Models\Infirms.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PerformFeedings.cs" />
+    <Compile Include="Models\Personnels.cs" />
     <Compile Include="Models\Reproductions.cs" />
     <Compile Include="Models\Sectors.cs" />
     <Compile Include="Models\Specimens.cs" />
@@ -279,6 +310,32 @@
     <Content Include="Views\PerformFeedings\Details.cshtml" />
     <Content Include="Views\PerformFeedings\Edit.cshtml" />
     <Content Include="Views\PerformFeedings\Index.cshtml" />
+    <Content Include="Views\HealthRecords\Create.cshtml" />
+    <Content Include="Views\HealthRecords\Delete.cshtml" />
+    <Content Include="Views\HealthRecords\Details.cshtml" />
+    <Content Include="Views\HealthRecords\Edit.cshtml" />
+    <Content Include="Views\HealthRecords\Index.cshtml" />
+    <Content Include="Views\Reproductions\Create.cshtml" />
+    <Content Include="Views\Reproductions\Delete.cshtml" />
+    <Content Include="Views\Reproductions\Details.cshtml" />
+    <Content Include="Views\Reproductions\Edit.cshtml" />
+    <Content Include="Views\Reproductions\Index.cshtml" />
+    <Content Include="Views\Sectors\Create.cshtml" />
+    <Content Include="Views\Sectors\Delete.cshtml" />
+    <Content Include="Views\Sectors\Details.cshtml" />
+    <Content Include="Views\Sectors\Edit.cshtml" />
+    <Content Include="Views\Sectors\Index.cshtml" />
+    <Content Include="Views\Personnels\Create.cshtml" />
+    <Content Include="Views\Personnels\Delete.cshtml" />
+    <Content Include="Views\Personnels\Details.cshtml" />
+    <Content Include="Views\Personnels\Edit.cshtml" />
+    <Content Include="Views\Personnels\Index.cshtml" />
+    <Content Include="Views\Infirms\Create.cshtml" />
+    <Content Include="Views\Infirms\Delete.cshtml" />
+    <Content Include="Views\Infirms\Details.cshtml" />
+    <Content Include="Views\Infirms\Edit.cshtml" />
+    <Content Include="Views\Infirms\Index.cshtml" />
+    <Content Include="Views\Feedings\AddPerfomFeedings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -302,6 +359,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202306141925102_SecondCreation.resx">
       <DependentUpon>202306141925102_SecondCreation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306142102470_FourthCreate.resx">
+      <DependentUpon>202306142102470_FourthCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306142119485_FifthCreate.resx">
+      <DependentUpon>202306142119485_FifthCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306142304403_SixthCreate.resx">
+      <DependentUpon>202306142304403_SixthCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306142341486_SeventhCreate.resx">
+      <DependentUpon>202306142341486_SeventhCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306150102346_EighthCreate.resx">
+      <DependentUpon>202306150102346_EighthCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306150352566_NinthCreate.resx">
+      <DependentUpon>202306150352566_NinthCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

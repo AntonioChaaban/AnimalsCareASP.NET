@@ -1,0 +1,57 @@
+﻿@model IEnumerable<A2projeto.Models.Reproductions>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.expectedMatingDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.matingDateHeld)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.scenarioDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descriptionAct)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pregnancy)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.expectedMatingDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.matingDateHeld)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.scenarioDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.descriptionAct)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pregnancy)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

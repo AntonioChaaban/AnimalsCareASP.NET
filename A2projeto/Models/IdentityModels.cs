@@ -34,7 +34,7 @@ namespace A2projeto.Models
         public DbSet<PerformFeedings> PerformFeedings { get; set; }
         public DbSet<Reproductions> Reproductions { get; set; }
         public DbSet<Sectors> Sectors { get; set; }
-        
+        public DbSet<Personnels> Personnels { get; set; }
 
         public static ApplicationDbContext Create()
         {

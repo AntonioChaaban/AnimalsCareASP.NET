@@ -46,7 +46,7 @@ namespace A2projeto.Controllers
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,feedingSchedule,feedingFrequencyPerDay,eatingHabits")] Feedings feedings)
+        public ActionResult Create([Bind(Include = "id,name,feedingSchedule,feedingFrequencyPerDay,eatingHabits")] Feedings feedings)
         {
             if (ModelState.IsValid)
             {

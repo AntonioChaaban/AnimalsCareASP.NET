@@ -9,7 +9,7 @@ namespace A2projeto.Models
     {
         public int id { get; set; }
         public String physicalHealth { get; set; }
-        public Animals animal { get; set; }
+        public string animal { get; set; }
 
         public List<Infirms> infirms { get; set; }
 

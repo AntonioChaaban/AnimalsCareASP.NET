@@ -9,6 +9,8 @@ namespace A2projeto.Models
     {
         public int id { get; set; }
 
+        public string name { get; set; }
+
         public String feedingSchedule { get; set; }
 
         public int feedingFrequencyPerDay { get; set; }

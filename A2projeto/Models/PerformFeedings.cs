@@ -8,7 +8,8 @@ namespace A2projeto.Models
     public class PerformFeedings
     {
         public int id { get; set; }
-        public Foods food { get; set; }
+        public string food { get; set; }
+        public string feedings { get; set; }
         public int quantity { get; set; }
 
         // pessoa que alimentou o animal

@@ -17,7 +17,51 @@ namespace A2projeto.Controllers
         // GET: PerformFeedings
         public ActionResult Index()
         {
-            return View(db.PerformFeedings.ToList());
+            // Busca a lista de animais no banco de dados
+            var performfeedings = db.PerformFeedings.ToList();
+            var feedings = db.Feedings.ToList();
+            var personnels = db.Personnels.ToList();
+            var foods = db.Foods.ToList();
+            int number;
+
+            foreach (var per in performfeedings)
+            {
+                foreach (var feed in feedings)
+                {
+                    if (int.TryParse(per.feedings, out number))
+                    {
+                        if (feed.id == int.Parse(per.feedings)) 
+                        {
+                            per.feedings = feed.name;
+                        }
+                    }
+                    else { }
+                }
+                foreach (var food in foods)
+                {
+                    if (int.TryParse(per.food, out number))
+                    {
+                        if (food.id == int.Parse(per.food))
+                        {
+                            per.food = food.name;
+                        }
+                    }
+                    else { }
+                }
+                foreach (var personnel in personnels) 
+                {
+                    if (int.TryParse(per.UserId, out number))
+                    {
+                        if (personnel.id == int.Parse(per.UserId))
+                        {
+                            per.UserId = personnel.name;
+                        }
+                    }
+                    else { }
+                }
+            }
+
+            return View(performfeedings);
         }
 
         // GET: PerformFeedings/Details/5
@@ -28,9 +72,22 @@ namespace A2projeto.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             PerformFeedings performFeedings = db.PerformFeedings.Find(id);
+            int number;
+            
             if (performFeedings == null)
             {
                 return HttpNotFound();
+            }
+            if (int.TryParse(performFeedings.feedings, out number) && int.TryParse(performFeedings.food, out number) && int.TryParse(performFeedings.UserId, out number))
+            {
+                Feedings feedings = db.Feedings.Find(int.Parse(performFeedings.feedings));
+                Personnels personnels = db.Personnels.Find(int.Parse(performFeedings.UserId));
+                Foods foods = db.Foods.Find(int.Parse(performFeedings.food));
+
+                performFeedings.food = foods.name;
+                performFeedings.feedings = feedings.name;
+                performFeedings.UserId = personnels.name;
+
             }
             return View(performFeedings);
         }
@@ -38,6 +95,32 @@ namespace A2projeto.Controllers
         // GET: PerformFeedings/Create
         public ActionResult Create()
         {
+            // Busca a lista de comidas no banco de dados
+            var feedings = db.Feedings.ToList();
+            var foods = db.Foods.ToList();
+            var personnels = db.Personnels.ToList();
+
+            // Converte a lista de comidas em uma lista de SelectListItem para enviar para a view
+            var foodsSelectList = foods.Select(a => new SelectListItem
+            {
+                Value = a.id.ToString(),
+                Text = a.name
+            }).ToList();
+            var personnelsSelectList = personnels.Select(a => new SelectListItem
+            {
+                Value = a.id.ToString(),
+                Text = a.name
+            }).ToList();
+            var feedingsSelectList = feedings.Select(a => new SelectListItem
+            {
+                Value = a.id.ToString(),
+                Text = a.name
+            }).ToList();
+
+            ViewBag.Animais = foodsSelectList;
+            ViewBag.Personnels = personnelsSelectList;
+            ViewBag.Feedings = feedingsSelectList;
+
             return View();
         }
 
@@ -46,7 +129,7 @@ namespace A2projeto.Controllers
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,quantity,UserId,feedingDate")] PerformFeedings performFeedings)
+        public ActionResult Create([Bind(Include = "id,feedings,food,quantity,UserId,feedingDate")] PerformFeedings performFeedings)
         {
             if (ModelState.IsValid)
             {
@@ -54,6 +137,13 @@ namespace A2projeto.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
+            var foods = db.Foods.ToList();
+            ViewBag.Animais = foods.Select(a => new SelectListItem
+            {
+                Value = a.id.ToString(),
+                Text = a.name
+            }).ToList();
 
             return View(performFeedings);
         }
@@ -70,6 +160,32 @@ namespace A2projeto.Controllers
             {
                 return HttpNotFound();
             }
+            // Busca a lista de comidas no banco de dados
+            var feedings = db.Feedings.ToList();
+            var foods = db.Foods.ToList();
+            var personnels = db.Personnels.ToList();
+
+            // Converte a lista de comidas em uma lista de SelectListItem para enviar para a view
+            var foodsSelectList = foods.Select(a => new SelectListItem
+            {
+                Value = a.id.ToString(),
+                Text = a.name
+            }).ToList();
+            var personnelsSelectList = personnels.Select(a => new SelectListItem
+            {
+                Value = a.id.ToString(),
+                Text = a.name
+            }).ToList();
+            var feedingsSelectList = feedings.Select(a => new SelectListItem
+            {
+                Value = a.id.ToString(),
+                Text = a.name
+            }).ToList();
+
+            ViewBag.Animais = foodsSelectList;
+            ViewBag.Personnels = personnelsSelectList;
+            ViewBag.Feedings = feedingsSelectList;
+
             return View(performFeedings);
         }
 
@@ -78,7 +194,7 @@ namespace A2projeto.Controllers
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,quantity,UserId,feedingDate")] PerformFeedings performFeedings)
+        public ActionResult Edit([Bind(Include = "id,feedings,food,quantity,UserId,feedingDate")] PerformFeedings performFeedings)
         {
             if (ModelState.IsValid)
             {
