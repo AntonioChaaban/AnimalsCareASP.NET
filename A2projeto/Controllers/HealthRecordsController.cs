@@ -121,8 +121,8 @@ namespace A2projeto.Controllers
         {
             if (ModelState.IsValid)
             {
-
-                Animals animal = db.Animals.FirstOrDefault(a => a.id.ToString() == healthRecords.animal);
+                int id = int.Parse(healthRecords.animal);
+                Animals animal = db.Animals.FirstOrDefault(a => a.id == id);
                 animal.healthRecords = healthRecords.id.ToString();
                 db.HealthRecords.Add(healthRecords);
                 db.SaveChanges();
@@ -140,6 +140,15 @@ namespace A2projeto.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             HealthRecords healthRecords = db.HealthRecords.Find(id);
+            var animals = db.Animals.ToList();
+
+            var animalsSelectList = animals.Select(a => new SelectListItem
+            {
+                Value = a.id.ToString(),
+                Text = a.name
+            }).ToList();
+
+            ViewBag.Animals = animalsSelectList;
             if (healthRecords == null)
             {
                 return HttpNotFound();
@@ -152,10 +161,13 @@ namespace A2projeto.Controllers
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,name,physicalHealth,pregnancyIdentificationDay,pregnancyStage,pregnancyDay,dateOfDelivery,numberOfOffspring,description")] HealthRecords healthRecords)
+        public ActionResult Edit([Bind(Include = "id,animal,name,physicalHealth,pregnancyIdentificationDay,pregnancyStage,pregnancyDay,dateOfDelivery,numberOfOffspring,description")] HealthRecords healthRecords)
         {
             if (ModelState.IsValid)
             {
+                int id = int.Parse(healthRecords.animal);
+                Animals animal = db.Animals.FirstOrDefault(a => a.id == id);
+                animal.healthRecords = healthRecords.id.ToString();
                 db.Entry(healthRecords).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

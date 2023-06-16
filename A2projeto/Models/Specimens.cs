@@ -7,6 +7,11 @@ namespace A2projeto.Models
 {
     public enum Specimens
     {
+        pinguin,
+        Tubarão,
+        Passaro,
+        Macacaco,
+        Jacaré,
         Cachorro,
         Gato,
         Pássaro,

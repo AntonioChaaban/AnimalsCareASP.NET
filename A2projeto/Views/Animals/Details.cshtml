@@ -81,6 +81,14 @@
         <dd>
             @Html.DisplayFor(model => model.characteristics)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.feedings)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.feedings)
+        </dd>
+
 
         <dt>
             @Html.DisplayNameFor(model => model.extinct)
@@ -105,13 +113,20 @@
         <dd>
             @Html.DisplayFor(model => model.standards_of_care)
         </dd>
-
         <dt>
-            @Html.LabelFor(model => model.standards_of_care, "HealthRecords")
+            @Html.DisplayNameFor(model => model.sector)
         </dt>
 
         <dd>
-            @Html.ActionLink("See HealthRecords", "SeeHealthRecords", new { id = Model.id })
+            @Html.DisplayFor(model => model.sector)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.healthRecords)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.healthRecords)
         </dd>
     </dl>
 </div>

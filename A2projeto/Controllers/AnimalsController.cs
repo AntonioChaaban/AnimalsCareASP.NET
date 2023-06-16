@@ -28,10 +28,22 @@ namespace A2projeto.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Animals animals = db.Animals.Find(id);
+            var feedings = db.Feedings.Find(int.Parse(animals.feedings));
+            var sectors = db.Sectors.Find(int.Parse(animals.sector));
             if (animals == null)
             {
                 return HttpNotFound();
             }
+            if (animals.healthRecords != null)
+            {
+                HealthRecords healthRecords = db.HealthRecords.Find(int.Parse(animals.healthRecords));
+                animals.healthRecords = healthRecords.name;
+            }
+            else {
+                animals.healthRecords = "Ainda não foi definido uma ficha médica";
+            }
+            animals.feedings = feedings.name;
+            animals.sector = sectors.name;
             return View(animals);
         }
 
@@ -72,7 +84,7 @@ namespace A2projeto.Controllers
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,name,tag_code,specimen,dateBirth,age,gender,locomotion,color,characteristics,extinct,reproduction_characteristcs,standards_of_care")] Animals animals)
+        public ActionResult Create([Bind(Include = "id,feedings,sector,name,tag_code,specimen,dateBirth,age,gender,locomotion,color,characteristics,extinct,reproduction_characteristcs,standards_of_care")] Animals animals)
         {
             if (ModelState.IsValid)
             {
@@ -106,6 +118,21 @@ namespace A2projeto.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Animals animals = db.Animals.Find(id);
+            var feedings = db.Feedings.ToList();
+            var sectors = db.Sectors.ToList();
+            var feedingsSelectList = feedings.Select(a => new SelectListItem
+            {
+                Value = a.id.ToString(),
+                Text = a.name
+            }).ToList();
+            var sectorsSelectList = sectors.Select(a => new SelectListItem
+            {
+                Value = a.id.ToString(),
+                Text = a.name
+            }).ToList();
+
+            ViewBag.Sectors = sectorsSelectList;
+            ViewBag.Feedings = feedingsSelectList;
             if (animals == null)
             {
                 return HttpNotFound();
@@ -118,7 +145,7 @@ namespace A2projeto.Controllers
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,name,tag_code,specimen,dateBirth,age,gender,locomotion,color,characteristics,extinct,reproduction_characteristcs,standards_of_care")] Animals animals)
+        public ActionResult Edit([Bind(Include = "id,feedings,sector,name,tag_code,specimen,dateBirth,age,gender,locomotion,color,characteristics,extinct,reproduction_characteristcs,standards_of_care")] Animals animals)
         {
             if (ModelState.IsValid)
             {
