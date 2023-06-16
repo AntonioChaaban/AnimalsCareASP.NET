@@ -14,10 +14,72 @@ namespace A2projeto.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: HealthRecords
+
+
+        public ActionResult SeeInferms(int? id)
+        {
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            int number;
+
+            var infirms = db.Set<Infirms>().Where(a => a.healthRecords == id.ToString()).ToList();
+            var healtrecords = db.HealthRecords.ToList();
+            var personels = db.Personnels.ToList();
+
+            foreach (var infirm in infirms)
+            {
+                foreach (var healthrecord in healtrecords)
+                {
+                    if (int.TryParse(infirm.healthRecords, out number))
+                    {
+                        if (healthrecord.id == int.Parse(infirm.healthRecords))
+                        {
+                            infirm.healthRecords = healthrecord.name;
+                        }
+                    }
+                    else { }
+                }
+                foreach (var personel in personels)
+                {
+                    if (int.TryParse(infirm.UserId, out number))
+                    {
+                        if (personel.id == int.Parse(infirm.UserId))
+                        {
+                            infirm.UserId = personel.name;
+                        }
+                    }
+                    else { }
+                }
+            }
+            return View(infirms);
+        }
+
+
+
+            // GET: HealthRecords
         public ActionResult Index()
         {
-            return View(db.HealthRecords.ToList());
+            var healthrecords = db.HealthRecords.ToList();
+            var animals = db.Animals.ToList();
+            int number;
+            foreach (var healthrecord in healthrecords)
+            {
+                foreach (var animal in animals)
+                {
+                    if (int.TryParse(healthrecord.animal, out number))
+                    {
+                        if (animal.id == int.Parse(healthrecord.animal))
+                        {
+                            healthrecord.animal = animal.name;
+                        }
+                    }
+                    else { }
+                }
+            }
+            return View(healthrecords);
         }
 
         // GET: HealthRecords/Details/5
@@ -38,6 +100,15 @@ namespace A2projeto.Controllers
         // GET: HealthRecords/Create
         public ActionResult Create()
         {
+           var animals = db.Animals.ToList();
+
+            var animalsSelectList = animals.Select(a => new SelectListItem
+            {
+                Value = a.id.ToString(),
+                Text = a.name
+            }).ToList();
+
+            ViewBag.Animals = animalsSelectList;
             return View();
         }
 
@@ -46,10 +117,13 @@ namespace A2projeto.Controllers
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,physicalHealth,pregnancyIdentificationDay,pregnancyStage,pregnancyDay,dateOfDelivery,numberOfOffspring,description")] HealthRecords healthRecords)
+        public ActionResult Create([Bind(Include = "id,name,animal,physicalHealth,pregnancyIdentificationDay,pregnancyStage,pregnancyDay,dateOfDelivery,numberOfOffspring,description")] HealthRecords healthRecords)
         {
             if (ModelState.IsValid)
             {
+
+                Animals animal = db.Animals.FirstOrDefault(a => a.id.ToString() == healthRecords.animal);
+                animal.healthRecords = healthRecords.id.ToString();
                 db.HealthRecords.Add(healthRecords);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -78,7 +152,7 @@ namespace A2projeto.Controllers
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,physicalHealth,pregnancyIdentificationDay,pregnancyStage,pregnancyDay,dateOfDelivery,numberOfOffspring,description")] HealthRecords healthRecords)
+        public ActionResult Edit([Bind(Include = "id,name,physicalHealth,pregnancyIdentificationDay,pregnancyStage,pregnancyDay,dateOfDelivery,numberOfOffspring,description")] HealthRecords healthRecords)
         {
             if (ModelState.IsValid)
             {

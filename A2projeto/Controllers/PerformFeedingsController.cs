@@ -14,6 +14,8 @@ namespace A2projeto.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+
+        
         // GET: PerformFeedings
         public ActionResult Index()
         {

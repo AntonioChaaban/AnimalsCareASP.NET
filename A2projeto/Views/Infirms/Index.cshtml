@@ -15,22 +15,7 @@
             @Html.DisplayNameFor(model => model.name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.physicalTreatment)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.pharmaceuticalTreatment)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.vaccine)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.frequencyOfTreatment)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.durationOfTreatment)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.treatmentStartDate)
+            @Html.DisplayNameFor(model => model.healthRecords)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.UserId)
@@ -44,30 +29,15 @@
             @Html.DisplayFor(modelItem => item.name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.physicalTreatment)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.pharmaceuticalTreatment)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.vaccine)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.frequencyOfTreatment)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.durationOfTreatment)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.treatmentStartDate)
+            @Html.DisplayFor(modelItem => item.healthRecords)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.UserId)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.id })
         </td>
     </tr>
 }

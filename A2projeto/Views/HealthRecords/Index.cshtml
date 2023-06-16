@@ -12,22 +12,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.physicalHealth)
+            @Html.DisplayNameFor(model => model.name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.pregnancyIdentificationDay)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.pregnancyStage)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.pregnancyDay)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.dateOfDelivery)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.numberOfOffspring)
+            @Html.DisplayNameFor(model => model.animal)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.description)
@@ -38,30 +26,18 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.physicalHealth)
+            @Html.DisplayFor(modelItem => item.name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.pregnancyIdentificationDay)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.pregnancyStage)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.pregnancyDay)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.dateOfDelivery)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.numberOfOffspring)
+            @Html.DisplayFor(modelItem => item.animal)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.description)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.id })
         </td>
     </tr>
 }

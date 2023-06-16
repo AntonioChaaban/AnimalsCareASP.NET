@@ -13,7 +13,9 @@
         <dt>
             @Html.DisplayNameFor(model => model.name)
         </dt>
-
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.feedingSchedule)
         </dt>
@@ -43,10 +45,10 @@
         </dt>
 
         <dd>
-            @Html.ActionLink("See PerformFeedings", "SeePerformFeedings")
+            @Html.ActionLink("See PerformFeedings", "SeePerformFeedings", new { id = Model.id })
         </dd>
 
-     
+
     </dl>
 </div>
 <p>

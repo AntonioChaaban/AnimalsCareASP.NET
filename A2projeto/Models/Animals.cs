@@ -29,6 +29,8 @@ namespace A2projeto.Models
 
         public string feedings { get; set; }
 
+        public string healthRecords { get; set; }
+
         public bool extinct { get; set; }
 
         public String reproduction_characteristcs { get; set; }

@@ -215,6 +215,18 @@
     <Compile Include="Migrations\202306150352566_NinthCreate.designer.cs">
       <DependentUpon>202306150352566_NinthCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202306151130394_TenthCreate.cs" />
+    <Compile Include="Migrations\202306151130394_TenthCreate.designer.cs">
+      <DependentUpon>202306151130394_TenthCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202306151543058_FirstUpdate.cs" />
+    <Compile Include="Migrations\202306151543058_FirstUpdate.designer.cs">
+      <DependentUpon>202306151543058_FirstUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202306151549096_SecondUpdate.cs" />
+    <Compile Include="Migrations\202306151549096_SecondUpdate.designer.cs">
+      <DependentUpon>202306151549096_SecondUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Animals.cs" />
@@ -335,7 +347,9 @@
     <Content Include="Views\Infirms\Details.cshtml" />
     <Content Include="Views\Infirms\Edit.cshtml" />
     <Content Include="Views\Infirms\Index.cshtml" />
-    <Content Include="Views\Feedings\AddPerfomFeedings.cshtml" />
+    <Content Include="Views\Feedings\SeePerformFeedings.cshtml" />
+    <Content Include="Views\Animals\SeeHealthRecords.cshtml" />
+    <Content Include="Views\HealthRecords\SeeInferms.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -377,6 +391,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202306150352566_NinthCreate.resx">
       <DependentUpon>202306150352566_NinthCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306151130394_TenthCreate.resx">
+      <DependentUpon>202306151130394_TenthCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306151543058_FirstUpdate.resx">
+      <DependentUpon>202306151543058_FirstUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306151549096_SecondUpdate.resx">
+      <DependentUpon>202306151549096_SecondUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -14,6 +14,59 @@ namespace A2projeto.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        public ActionResult SeePerformFeedings(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            int number;
+            
+            var performfeedings = db.Set<PerformFeedings>().Where(a => a.feedings == id.ToString()).ToList();
+            var feedings = db.Feedings.ToList();
+            var personnels = db.Personnels.ToList();
+            var foods = db.Foods.ToList();
+
+            foreach (var per in performfeedings)
+            {
+                foreach (var feed in feedings)
+                {
+                    if (int.TryParse(per.feedings, out number))
+                    {
+                        if (feed.id == int.Parse(per.feedings))
+                        {
+                            per.feedings = feed.name;
+                        }
+                    }
+                    else { }
+                }
+                foreach (var food in foods)
+                {
+                    if (int.TryParse(per.food, out number))
+                    {
+                        if (food.id == int.Parse(per.food))
+                        {
+                            per.food = food.name;
+                        }
+                    }
+                    else { }
+                }
+                foreach (var personnel in personnels)
+                {
+                    if (int.TryParse(per.UserId, out number))
+                    {
+                        if (personnel.id == int.Parse(per.UserId))
+                        {
+                            per.UserId = personnel.name;
+                        }
+                    }
+                    else { }
+                }
+            }
+
+            return View(performfeedings);
+        }
+
         // GET: Feedings
         public ActionResult Index()
         {

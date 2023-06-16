@@ -40,6 +40,7 @@ namespace A2projeto.Controllers
         {
             var feedings = db.Feedings.ToList();
             var sectors = db.Sectors.ToList();
+            var healthRecords = db.HealthRecords.ToList();
 
             var feedingsSelectList = feedings.Select(a => new SelectListItem
             {
@@ -53,9 +54,15 @@ namespace A2projeto.Controllers
                 Text = a.name
             }).ToList();
 
+            var healthRecordsSelectList = healthRecords.Select(a => new SelectListItem
+            {
+                Value = a.id.ToString(),
+                Text = a.name
+            }).ToList();
 
             ViewBag.Feedings = feedingsSelectList;
             ViewBag.Sectors = sectorsSelectList;
+            ViewBag.HealthRecords = healthRecordsSelectList;
 
             return View();
         }

@@ -8,6 +8,7 @@ namespace A2projeto.Models
     public class HealthRecords
     {
         public int id { get; set; }
+        public string name { get; set; }
         public String physicalHealth { get; set; }
         public string animal { get; set; }
 

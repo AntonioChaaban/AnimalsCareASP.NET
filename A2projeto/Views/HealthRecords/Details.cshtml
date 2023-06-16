@@ -65,6 +65,12 @@
         <dd>
             @Html.DisplayFor(model => model.description)
         </dd>
+        <dt>
+            @Html.LabelFor(model => model.description, "Inferms")
+        </dt>
+        <dd>
+            @Html.ActionLink("See Inferms", "SeeInferms", new { id = Model.id })
+        </dd>
 
     </dl>
 </div>

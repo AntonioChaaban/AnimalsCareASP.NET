@@ -106,6 +106,13 @@
             @Html.DisplayFor(model => model.standards_of_care)
         </dd>
 
+        <dt>
+            @Html.LabelFor(model => model.standards_of_care, "HealthRecords")
+        </dt>
+
+        <dd>
+            @Html.ActionLink("See HealthRecords", "SeeHealthRecords", new { id = Model.id })
+        </dd>
     </dl>
 </div>
 <p>

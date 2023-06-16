@@ -125,3 +125,6 @@ C:\Users\tom25\Desktop\tom\facu\TÓPICOS EM PROGRAMAÇÃO III\PROJETOA2\A2projet
 C:\Users\tom25\Desktop\tom\facu\TÓPICOS EM PROGRAMAÇÃO III\PROJETOA2\A2projeto\A2projeto\obj\Debug\A2projeto.Migrations.SeventhCreate.resources
 C:\Users\tom25\Desktop\tom\facu\TÓPICOS EM PROGRAMAÇÃO III\PROJETOA2\A2projeto\A2projeto\obj\Debug\A2projeto.Migrations.EighthCreate.resources
 C:\Users\tom25\Desktop\tom\facu\TÓPICOS EM PROGRAMAÇÃO III\PROJETOA2\A2projeto\A2projeto\obj\Debug\A2projeto.Migrations.NinthCreate.resources
+C:\Users\tom25\Desktop\tom\facu\TÓPICOS EM PROGRAMAÇÃO III\PROJETOA2\A2projeto\A2projeto\obj\Debug\A2projeto.Migrations.TenthCreate.resources
+C:\Users\tom25\Desktop\tom\facu\TÓPICOS EM PROGRAMAÇÃO III\PROJETOA2\A2projeto\A2projeto\obj\Debug\A2projeto.Migrations.FirstUpdate.resources
+C:\Users\tom25\Desktop\tom\facu\TÓPICOS EM PROGRAMAÇÃO III\PROJETOA2\A2projeto\A2projeto\obj\Debug\A2projeto.Migrations.SecondUpdate.resources

@@ -13,7 +13,7 @@ namespace A2projeto.Models
         public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
     }
-
+    
     public class ManageLoginsViewModel
     {
         public IList<UserLoginInfo> CurrentLogins { get; set; }
@@ -65,6 +65,7 @@ namespace A2projeto.Models
         [Display(Name = "Número de telefone")]
         public string Number { get; set; }
     }
+
 
     public class VerifyPhoneNumberViewModel
     {

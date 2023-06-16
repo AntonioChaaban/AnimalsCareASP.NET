@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using A2projeto.Models;
+using Microsoft.Ajax.Utilities;
 
 namespace A2projeto.Controllers
 {
@@ -17,7 +18,37 @@ namespace A2projeto.Controllers
         // GET: Infirms
         public ActionResult Index()
         {
-            return View(db.Infirms.ToList());
+            var infirms = db.Infirms.ToList();
+            var healtrecords = db.HealthRecords.ToList();
+            var personels =  db.Personnels.ToList();
+            int number;
+
+            foreach (var infirm in infirms) 
+            {
+                foreach (var healthrecord in healtrecords)
+                {
+                    if (int.TryParse(infirm.healthRecords, out number))
+                    {
+                        if (healthrecord.id == int.Parse(infirm.healthRecords))
+                        {
+                            infirm.healthRecords = healthrecord.name;
+                        }
+                    }
+                    else { }
+                }
+                foreach (var personel in personels)
+                {
+                    if (int.TryParse(infirm.UserId, out number))
+                    {
+                        if (personel.id == int.Parse(infirm.UserId))
+                        {
+                            infirm.UserId = personel.name;
+                        }
+                    }
+                    else { }
+                }
+            }
+            return View(infirms);
         }
 
         // GET: Infirms/Details/5
@@ -39,12 +70,20 @@ namespace A2projeto.Controllers
         public ActionResult Create()
         {
             var personnels = db.Personnels.ToList();
+            var healthRecords = db.HealthRecords.ToList();
+
             var personnelsSelectList = personnels.Select(a => new SelectListItem
             {
                 Value = a.id.ToString(),
                 Text = a.name
             }).ToList();
+            var healthRecordsSelectList = healthRecords.Select(a => new SelectListItem
+            {
+                Value = a.id.ToString(),
+                Text = a.name
+            }).ToList();
             ViewBag.Personnels = personnelsSelectList;
+            ViewBag.HealthRecords = healthRecordsSelectList;
             return View();
         }
 
@@ -53,7 +92,7 @@ namespace A2projeto.Controllers
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,name,physicalTreatment,pharmaceuticalTreatment,vaccine,frequencyOfTreatment,durationOfTreatment,treatmentStartDate,UserId")] Infirms infirms)
+        public ActionResult Create([Bind(Include = "id,healthRecords,name,physicalTreatment,pharmaceuticalTreatment,vaccine,frequencyOfTreatment,durationOfTreatment,treatmentStartDate,UserId")] Infirms infirms)
         {
             if (ModelState.IsValid)
             {
