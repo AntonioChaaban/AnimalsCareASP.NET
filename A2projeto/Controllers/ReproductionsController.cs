@@ -28,6 +28,10 @@ namespace A2projeto.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Reproductions reproductions = db.Reproductions.Find(id);
+            var animalM = db.Animals.Find(int.Parse(reproductions.animalMale));
+            var animalF = db.Animals.Find(int.Parse(reproductions.animalFemale));
+            reproductions.animalMale = animalM.name;
+            reproductions.animalFemale = animalF.name;
             if (reproductions == null)
             {
                 return HttpNotFound();
@@ -85,6 +89,17 @@ namespace A2projeto.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Reproductions reproductions = db.Reproductions.Find(id);
+            var animais = db.Animals.ToList();
+
+
+            // Converte a lista de animais em uma lista de SelectListItem para enviar para a view
+            var animaisSelectList = animais.Select(a => new SelectListItem
+            {
+                Value = a.id.ToString(),
+                Text = a.name
+            }).ToList();
+
+            ViewBag.Animais = animaisSelectList;
             if (reproductions == null)
             {
                 return HttpNotFound();

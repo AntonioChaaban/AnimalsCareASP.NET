@@ -59,6 +59,8 @@ namespace A2projeto.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Infirms infirms = db.Infirms.Find(id);
+            var personel = db.Personnels.Find(int.Parse(infirms.UserId));
+            infirms.UserId = personel.name;
             if (infirms == null)
             {
                 return HttpNotFound();
