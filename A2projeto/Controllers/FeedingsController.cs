@@ -163,8 +163,15 @@ namespace A2projeto.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Feedings feedings = db.Feedings.Find(id);
-            db.Feedings.Remove(feedings);
-            db.SaveChanges();
+            List<PerformFeedings> performfeedings = db.PerformFeedings.Where(a => a.feedings == feedings.id.ToString()).ToList();
+            if (performfeedings.Count == 0)
+            {
+                //db.Infirms.RemoveRange(infirms);
+
+                db.Feedings.Remove(feedings);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
             return RedirectToAction("Index");
         }
 

@@ -34,7 +34,6 @@ namespace A2projeto.Controllers
                             infirm.healthRecords = healthrecord.name;
                         }
                     }
-                    else { }
                 }
                 foreach (var personel in personels)
                 {
@@ -59,12 +58,17 @@ namespace A2projeto.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Infirms infirms = db.Infirms.Find(id);
-            var personel = db.Personnels.Find(int.Parse(infirms.UserId));
-            infirms.UserId = personel.name;
-            if (infirms == null)
+
+            try {
+                var healthRecords = db.HealthRecords.Find(int.Parse(infirms.healthRecords));
+                var personel = db.Personnels.Find(int.Parse(infirms.UserId));
+                infirms.UserId = personel.name;
+                infirms.healthRecords = healthRecords.name;
+            } catch (Exception e)
             {
                 return HttpNotFound();
             }
+
             return View(infirms);
         }
 

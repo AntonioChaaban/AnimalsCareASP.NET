@@ -227,6 +227,10 @@
     <Compile Include="Migrations\202306151549096_SecondUpdate.designer.cs">
       <DependentUpon>202306151549096_SecondUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202306171955546_DecimaSrgundaCretae.cs" />
+    <Compile Include="Migrations\202306171955546_DecimaSrgundaCretae.designer.cs">
+      <DependentUpon>202306171955546_DecimaSrgundaCretae.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Animals.cs" />
@@ -400,6 +404,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202306151549096_SecondUpdate.resx">
       <DependentUpon>202306151549096_SecondUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306171955546_DecimaSrgundaCretae.resx">
+      <DependentUpon>202306171955546_DecimaSrgundaCretae.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

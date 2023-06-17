@@ -17,7 +17,6 @@ namespace A2projeto.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
         public AccountController()
         {
         }
@@ -327,7 +326,7 @@ namespace A2projeto.Controllers
             {
                 return RedirectToAction("Login");
             }
-
+            
             // Faça logon do usuário com este provedor de logon externo se o usuário já tiver um logon
             var result = await SignInManager.ExternalSignInAsync(loginInfo, isPersistent: false);
             switch (result)

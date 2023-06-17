@@ -196,8 +196,14 @@ namespace A2projeto.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             HealthRecords healthRecords = db.HealthRecords.Find(id);
-            db.HealthRecords.Remove(healthRecords);
-            db.SaveChanges();
+            List<Infirms> infirms = db.Infirms.Where(a => a.healthRecords == healthRecords.id.ToString()).ToList();
+            if (infirms.Count == 0) {
+                //db.Infirms.RemoveRange(infirms);
+
+                db.HealthRecords.Remove(healthRecords);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
             return RedirectToAction("Index");
         }
 
