@@ -1,0 +1,57 @@
+﻿@model A2projeto.Models.Feedings
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Feedings</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.feedingSchedule)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.feedingSchedule)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.feedingFrequencyPerDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.feedingFrequencyPerDay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.eatingHabits)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.eatingHabits)
+        </dd>
+
+        <dt>
+            @Html.LabelFor(model => model.eatingHabits, "PerformFeedings")
+        </dt>
+
+        <dd>
+            @Html.ActionLink("See PerformFeedings", "SeePerformFeedings", new { id = Model.id })
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
